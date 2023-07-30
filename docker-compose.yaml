@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  web:
+    build:
+      context: ./chatbot-ui-main
+      dockerfile: Dockerfile
+    environment:
+      - OPENAI_API_KEY
+      - OPENAI_API_HOST
+    ports:
+      - '3000:3000'
+  
+  app:
+    build:
+      context: ./custom_chatbot_server
+      dockerfile: Dockerfile
+    ports:
+      - '8000:8000'
